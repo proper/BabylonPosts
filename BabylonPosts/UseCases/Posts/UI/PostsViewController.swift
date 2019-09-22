@@ -24,36 +24,18 @@ final class PostsViewController: UIViewController {
         return vc
     }
 
-    func bindViewModel() {
-        viewModel?.onPostsUpdated = {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-
-        viewModel?.onLoadingStateChanged = {
-            DispatchQueue.main.async {
-                guard let viewModel = self.viewModel else {
-                    return
-                }
-
-                if viewModel.isLoading {
-                    self.startLoading()
-                } else {
-                    self.stopLoading()
-                }
-            }
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "Posts"
-
+        setupUI()
         setupTableView()
         addRefreshControl()
+
         fetchPosts()
+    }
+
+    private func setupUI() {
+        navigationItem.title = "Posts"
     }
 
     private func setupTableView() {
@@ -73,6 +55,35 @@ final class PostsViewController: UIViewController {
 
     @objc private func fetchPosts() {
         viewModel?.fetchPosts()
+    }
+}
+
+// MARK: View binding
+extension PostsViewController {
+    func bindViewModel() {
+        viewModel?.onPostsUpdated = {
+            DispatchQueue.main.async {
+                self.onPostsUpdated()
+            }
+        }
+
+        viewModel?.onLoadingStateChanged = {
+            DispatchQueue.main.async {
+                self.onLoadingStateChanged()
+            }
+        }
+    }
+
+    private func onPostsUpdated() {
+        tableView.reloadData()
+    }
+
+    private func onLoadingStateChanged() {
+        if viewModel?.isLoading ?? false {
+            startLoading()
+        } else {
+            stopLoading()
+        }
     }
 
     private func startLoading() {

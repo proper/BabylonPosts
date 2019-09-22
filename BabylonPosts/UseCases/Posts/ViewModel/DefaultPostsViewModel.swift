@@ -58,7 +58,7 @@ final class DefaultPostsViewModel: PostsViewModel {
         }
     }
 
-    func handleError(error: Error) {
+    private func handleError(error: Error) {
         DispatchQueue.main.async {
             self.navigator.navigate(to: .error(error: error))
         }

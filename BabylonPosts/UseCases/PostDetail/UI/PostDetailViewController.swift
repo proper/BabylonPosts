@@ -29,41 +29,37 @@ final class PostDetailViewController: UIViewController {
 
         viewModel?.fetchPostDetail()
     }
+}
 
+// MARK: View binding
+extension PostDetailViewController {
     func bindViewModel() {
         viewModel?.onPostDetailUpdated = {
             DispatchQueue.main.async {
-                if let viewModel = self.viewModel {
-                    self.textView.attributedText = self.attributedTextViewString
-                    self.navigationItem.title = viewModel.title ?? ""
-                }
+                self.onPostDetailUpdated()
             }
         }
 
         viewModel?.onLoadingStateChanged = {
             DispatchQueue.main.async {
-                guard let viewModel = self.viewModel else {
-                    return
-                }
-
-                if viewModel.isLoading {
-                    self.startLoading()
-                } else {
-                    self.stopLoading()
-                }
+                self.onLoadingStateChanged()
             }
         }
     }
 
-    private func startLoading() {
-        hud?.dismiss()
-        hud = JGProgressHUD(style: .light)
-        hud?.textLabel.text = "Loading"
-        hud?.show(in: view)
+    private func onPostDetailUpdated() {
+        textView.attributedText = self.attributedTextViewString
+        navigationItem.title = viewModel?.title ?? ""
     }
 
-    private func stopLoading() {
+    private func onLoadingStateChanged() {
         hud?.dismiss()
+
+        if viewModel?.isLoading ?? false {
+            hud = JGProgressHUD(style: .light)
+            hud?.textLabel.text = "Loading"
+            hud?.show(in: view)
+        }
     }
 }
 
@@ -80,7 +76,7 @@ extension PostDetailViewController {
     private var attributedAuthorString: NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
-        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 26),
+        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 20),
                                                          .paragraphStyle: paragraph]
         return NSAttributedString(string: "\(viewModel?.author ?? "")\n\n", attributes: attridutes)
     }
@@ -93,7 +89,7 @@ extension PostDetailViewController {
     private var attributedCommentsString: NSAttributedString {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
-        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 18),
+        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14),
                                                          .paragraphStyle: paragraph]
         return NSAttributedString(string: "\(viewModel?.numberOfComments ?? 0) comments\n\n", attributes: attridutes)
     }
