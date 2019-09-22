@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.0.0-rc.2)
+  - JGProgressHUD (2.0.4)
   - PromiseKit (6.11.0):
     - PromiseKit/CorePromise (= 6.11.0)
     - PromiseKit/Foundation (= 6.11.0)
@@ -13,20 +14,23 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.2)
+  - JGProgressHUD (~> 2.0.4)
   - PromiseKit (~> 6.8)
   - SwiftLint (~> 0.35)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - JGProgressHUD
     - PromiseKit
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
+  JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
   PromiseKit: e4863d06976e7dee5e41c04fc7371c16b3600292
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
-PODFILE CHECKSUM: b6ab62ac9e32658e1608924c01621c80519ea491
+PODFILE CHECKSUM: c6cdcecf2be3aa916b12dc51cd3c68eba087dc0d
 
 COCOAPODS: 1.7.5

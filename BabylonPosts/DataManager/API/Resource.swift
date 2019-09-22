@@ -8,7 +8,7 @@
 
 import Alamofire
 
-public enum Resource {
+enum Resource {
     case posts
     case user(userId: Int)
     case comments(postId: Int)

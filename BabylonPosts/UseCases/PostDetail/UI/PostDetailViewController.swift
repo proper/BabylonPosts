@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 final class PostDetailViewController: UIViewController {
     var viewModel: PostDetailViewModel?
     var navigator: PostsNavigator?
 
     @IBOutlet weak var textView: UITextView!
+
+    private var hud: JGProgressHUD?
 
     static func make(with viewModel: PostDetailViewModel) -> PostDetailViewController {
         let vc: PostDetailViewController = PostDetailViewController.fromNib()
@@ -28,7 +31,7 @@ final class PostDetailViewController: UIViewController {
     }
 
     func bindViewModel() {
-        viewModel?.postDetailUpdated = {
+        viewModel?.onPostDetailUpdated = {
             DispatchQueue.main.async {
                 if let viewModel = self.viewModel {
                     self.textView.text = (viewModel.author ?? "") + (viewModel.description ?? "") + "\(viewModel.numberOfComments ?? 0)"
@@ -36,5 +39,30 @@ final class PostDetailViewController: UIViewController {
                 }
             }
         }
+
+        viewModel?.onLoadingStateChanged = {
+            DispatchQueue.main.async {
+                guard let viewModel = self.viewModel else {
+                    return
+                }
+
+                if viewModel.isLoading {
+                    self.startLoading()
+                } else {
+                    self.stopLoading()
+                }
+            }
+        }
+    }
+
+    private func startLoading() {
+        hud?.dismiss()
+        hud = JGProgressHUD(style: .light)
+        hud?.textLabel.text = "Loading"
+        hud?.show(in: view)
+    }
+
+    private func stopLoading() {
+        hud?.dismiss()
     }
 }

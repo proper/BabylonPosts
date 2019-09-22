@@ -8,13 +8,21 @@
 
 import PromiseKit
 
-class DefaultPostDetailViewModel: PostDetailViewModel {
+final class DefaultPostDetailViewModel: PostDetailViewModel {
     var description: String?
     var author: String?
     var numberOfComments: Int?
     var title: String?
 
-    var postDetailUpdated: (() -> Void)?
+    var isLoading: Bool {
+        didSet {
+            self.onLoadingStateChanged?()
+        }
+    }
+
+    // Binding
+    var onLoadingStateChanged: (() -> Void)?
+    var onPostDetailUpdated: (() -> Void)?
 
     let post: Post
     private let networkService: NetworkService
@@ -26,17 +34,22 @@ class DefaultPostDetailViewModel: PostDetailViewModel {
         self.title = post.title
         self.networkService = networkService
         self.navigator = navigator
+        self.isLoading = false
     }
 
     func fetchPostDetail() {
+        isLoading = true
+
         // Demo the synchronization
         firstly {
             when(fulfilled: networkService.fetchUser(for: post.userId), networkService.fetchComments(for: post.id))
         }.done { (user, comments) in
+            self.isLoading = false
             self.author = user.name
             self.numberOfComments = comments.count
-            self.postDetailUpdated?()
+            self.onPostDetailUpdated?()
         }.catch { error in
+            self.isLoading = false
             self.handleError(error: error)
         }
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DefaultPostsNavigator: PostsNavigator {
+final class DefaultPostsNavigator: PostsNavigator {
     private weak var navigationController: UINavigationController?
     private let networkService: NetworkService
 

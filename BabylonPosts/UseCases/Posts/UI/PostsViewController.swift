@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 final class PostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+
     private lazy var refreshControl = UIRefreshControl()
+    private var hud: JGProgressHUD?
 
     var viewModel: PostsViewModel?
 
@@ -24,8 +27,21 @@ final class PostsViewController: UIViewController {
     func bindViewModel() {
         viewModel?.onPostsUpdated = {
             DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
                 self.tableView.reloadData()
+            }
+        }
+
+        viewModel?.onLoadingStateChanged = {
+            DispatchQueue.main.async {
+                guard let viewModel = self.viewModel else {
+                    return
+                }
+
+                if viewModel.isLoading {
+                    self.startLoading()
+                } else {
+                    self.stopLoading()
+                }
             }
         }
     }
@@ -33,17 +49,20 @@ final class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "Posts"
+
+        setupTableView()
+        addRefreshControl()
+        fetchPosts()
+    }
+
+    private func setupTableView() {
         tableView.register(UINib(nibName: String(describing: PostCell.self), bundle: nil),
                            forCellReuseIdentifier: PostCell.identifier)
         //TODO: need to separate those out
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-
-        self.navigationItem.title = "Posts"
-
-        addRefreshControl()
-        fetchPosts()
     }
 
     private func addRefreshControl() {
@@ -53,6 +72,18 @@ final class PostsViewController: UIViewController {
 
     @objc private func fetchPosts() {
         viewModel?.fetchPosts()
+    }
+
+    private func startLoading() {
+        hud?.dismiss()
+        hud = JGProgressHUD(style: .light)
+        hud?.textLabel.text = "Loading"
+        hud?.show(in: view)
+    }
+
+    private func stopLoading() {
+        hud?.dismiss()
+        refreshControl.endRefreshing()
     }
 }
 

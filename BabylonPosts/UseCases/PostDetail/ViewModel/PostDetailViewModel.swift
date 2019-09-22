@@ -14,9 +14,11 @@ protocol PostDetailViewModel {
     var author: String? { get }
     var numberOfComments: Int? { get }
     var title: String? { get }
+    var isLoading: Bool { get }
 
     // Simple binding
-    var postDetailUpdated: (() -> Void)? { get set }
+    var onLoadingStateChanged: (() -> Void)? { get set }
+    var onPostDetailUpdated: (() -> Void)? { get set }
 
     func fetchPostDetail()
 }
