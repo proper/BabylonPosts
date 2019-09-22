@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Posts
+@testable import BabylonPosts
 
 class PostsTests: XCTestCase {
 

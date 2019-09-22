@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5FDDD40320C8165ABD00C7EE /* Pods_BabylonPostsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B44FD9158244F10E892A95 /* Pods_BabylonPostsUITests.framework */; };
-		AFF078B6D058DA4B111E432B /* Pods_BabylonPostsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C2529F665A0A8DC2F515752 /* Pods_BabylonPostsTests.framework */; };
-		D5D886E9CA9EF2680622096B /* Pods_BabylonPosts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B42496A25A61525DFAEB396 /* Pods_BabylonPosts.framework */; };
+		22C8AEE0B96E0526FAFD9567 /* Pods_BabylonPosts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8CBE206C47B291F8293C4EC /* Pods_BabylonPosts.framework */; };
+		70FF9B6BA6771ED9D86D023D /* Pods_BabylonPostsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BF402CC678AB363CB72A49 /* Pods_BabylonPostsUITests.framework */; };
 		F0026E5E23366FA7003DF15B /* UIViewController+fromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026E5D23366FA7003DF15B /* UIViewController+fromNib.swift */; };
 		F0026E6623368037003DF15B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026E6423368037003DF15B /* PostCell.swift */; };
 		F0026E6723368037003DF15B /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0026E6523368037003DF15B /* PostCell.xib */; };
@@ -41,6 +40,7 @@
 		F06128D42336308000E18665 /* PostsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128D32336308000E18665 /* PostsUITests.swift */; };
 		F06128EA233643A400E18665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128E9233643A400E18665 /* Post.swift */; };
 		F06128EF2336469000E18665 /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128EE2336469000E18665 /* PostsNavigator.swift */; };
+		FACDF31F0872196EA5EC5BA0 /* Pods_BabylonPostsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C249FB04437C559FFEDE6B7D /* Pods_BabylonPostsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,17 +63,17 @@
 /* Begin PBXFileReference section */
 		01B88ADE0E2DFD18EC2F1874 /* Pods-PostsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsUITests.release.xcconfig"; path = "Target Support Files/Pods-PostsUITests/Pods-PostsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1C77F36FEED9020BA04DAD23 /* Pods-PostsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsUITests.debug.xcconfig"; path = "Target Support Files/Pods-PostsUITests/Pods-PostsUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		2C2529F665A0A8DC2F515752 /* Pods_BabylonPostsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabylonPostsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35B44FD9158244F10E892A95 /* Pods_BabylonPostsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabylonPostsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B42496A25A61525DFAEB396 /* Pods_BabylonPosts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabylonPosts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56C8EB1774E065D177581425 /* Pods-PostsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsTests.debug.xcconfig"; path = "Target Support Files/Pods-PostsTests/Pods-PostsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		59E56EFDF33EDDB3E984672B /* Pods-BabylonPostsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabylonPostsTests.release.xcconfig"; path = "Target Support Files/Pods-BabylonPostsTests/Pods-BabylonPostsTests.release.xcconfig"; sourceTree = "<group>"; };
 		6018C06F77DEED8D512FFF8E /* Pods-BabylonPostsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabylonPostsUITests.debug.xcconfig"; path = "Target Support Files/Pods-BabylonPostsUITests/Pods-BabylonPostsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		72BF402CC678AB363CB72A49 /* Pods_BabylonPostsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabylonPostsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A322EC3C1F45EA590B865363 /* Pods-Posts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Posts.release.xcconfig"; path = "Target Support Files/Pods-Posts/Pods-Posts.release.xcconfig"; sourceTree = "<group>"; };
 		AB91D2D263CCA233E0967DA7 /* Pods-BabylonPosts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabylonPosts.release.xcconfig"; path = "Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts.release.xcconfig"; sourceTree = "<group>"; };
 		ADCF2B278C664BF88F2BAB1C /* Pods-Posts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Posts.debug.xcconfig"; path = "Target Support Files/Pods-Posts/Pods-Posts.debug.xcconfig"; sourceTree = "<group>"; };
 		B236FFC4F56578C12CE65001 /* Pods-BabylonPostsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabylonPostsTests.debug.xcconfig"; path = "Target Support Files/Pods-BabylonPostsTests/Pods-BabylonPostsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B8B62EF7B2D670B75D78B441 /* Pods-BabylonPostsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabylonPostsUITests.release.xcconfig"; path = "Target Support Files/Pods-BabylonPostsUITests/Pods-BabylonPostsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C249FB04437C559FFEDE6B7D /* Pods_BabylonPostsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabylonPostsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8CBE206C47B291F8293C4EC /* Pods_BabylonPosts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BabylonPosts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2F8EA69AEFCC2DB7798D73 /* Pods-BabylonPosts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BabylonPosts.debug.xcconfig"; path = "Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts.debug.xcconfig"; sourceTree = "<group>"; };
 		F0026E59233669F1003DF15B /* DefaultPostsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostsNavigator.swift; sourceTree = "<group>"; };
 		F0026E5D23366FA7003DF15B /* UIViewController+fromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+fromNib.swift"; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D886E9CA9EF2680622096B /* Pods_BabylonPosts.framework in Frameworks */,
+				22C8AEE0B96E0526FAFD9567 /* Pods_BabylonPosts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF078B6D058DA4B111E432B /* Pods_BabylonPostsTests.framework in Frameworks */,
+				FACDF31F0872196EA5EC5BA0 /* Pods_BabylonPostsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FDDD40320C8165ABD00C7EE /* Pods_BabylonPostsUITests.framework in Frameworks */,
+				70FF9B6BA6771ED9D86D023D /* Pods_BabylonPostsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,9 +165,9 @@
 		8C261B9CC8F844F6B3DC86C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B42496A25A61525DFAEB396 /* Pods_BabylonPosts.framework */,
-				2C2529F665A0A8DC2F515752 /* Pods_BabylonPostsTests.framework */,
-				35B44FD9158244F10E892A95 /* Pods_BabylonPostsUITests.framework */,
+				C8CBE206C47B291F8293C4EC /* Pods_BabylonPosts.framework */,
+				C249FB04437C559FFEDE6B7D /* Pods_BabylonPostsTests.framework */,
+				72BF402CC678AB363CB72A49 /* Pods_BabylonPostsUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -372,8 +372,8 @@
 				F06128AC2336307F00E18665 /* Sources */,
 				F06128AD2336307F00E18665 /* Frameworks */,
 				F06128AE2336307F00E18665 /* Resources */,
-				27E808192B997E1ABE5D631A /* [CP] Embed Pods Frameworks */,
 				F0026E5B23366D4F003DF15B /* SwiftLint */,
+				3D528A16055CCB57E7A319F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -495,7 +495,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		27E808192B997E1ABE5D631A /* [CP] Embed Pods Frameworks */ = {
+		3D528A16055CCB57E7A319F2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -888,9 +888,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alsyapps.demos.BabylonPostsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Posts;
+				TEST_TARGET_NAME = BabylonPosts;
 			};
 			name = Debug;
 		};
@@ -909,9 +910,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.alsyapps.demos.BabylonPostsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Posts;
+				TEST_TARGET_NAME = BabylonPosts;
 			};
 			name = Release;
 		};
