@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OO-xd-4y5">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="10" y="44" width="394" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -30,9 +30,9 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4OO-xd-4y5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IqO-P6-YF4"/>
-                <constraint firstItem="4OO-xd-4y5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LRC-IG-Ue6"/>
+                <constraint firstItem="4OO-xd-4y5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="LRC-IG-Ue6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4OO-xd-4y5" secondAttribute="bottom" id="eUm-Zp-a1M"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4OO-xd-4y5" secondAttribute="trailing" id="s8x-A2-nS1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4OO-xd-4y5" secondAttribute="trailing" constant="10" id="s8x-A2-nS1"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="153"/>

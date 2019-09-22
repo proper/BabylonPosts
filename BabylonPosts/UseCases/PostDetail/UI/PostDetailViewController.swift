@@ -34,7 +34,7 @@ final class PostDetailViewController: UIViewController {
         viewModel?.onPostDetailUpdated = {
             DispatchQueue.main.async {
                 if let viewModel = self.viewModel {
-                    self.textView.text = (viewModel.author ?? "") + (viewModel.description ?? "") + "\(viewModel.numberOfComments ?? 0)"
+                    self.textView.attributedText = self.attributedTextViewString
                     self.navigationItem.title = viewModel.title ?? ""
                 }
             }
@@ -64,5 +64,37 @@ final class PostDetailViewController: UIViewController {
 
     private func stopLoading() {
         hud?.dismiss()
+    }
+}
+
+// MARK: Attributed strings
+extension PostDetailViewController {
+    private var attributedTextViewString: NSAttributedString {
+        let str = NSMutableAttributedString()
+        str.append(attributedAuthorString)
+        str.append(attributedCommentsString)
+        str.append(attributedDescriptionString)
+        return str
+    }
+
+    private var attributedAuthorString: NSAttributedString {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 26),
+                                                         .paragraphStyle: paragraph]
+        return NSAttributedString(string: "\(viewModel?.author ?? "")\n\n", attributes: attridutes)
+    }
+
+    private var attributedDescriptionString: NSAttributedString {
+        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16)]
+        return NSAttributedString(string: "\(viewModel?.description ?? "")\n\n", attributes: attridutes)
+    }
+
+    private var attributedCommentsString: NSAttributedString {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = .center
+        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 18),
+                                                         .paragraphStyle: paragraph]
+        return NSAttributedString(string: "\(viewModel?.numberOfComments ?? 0) comments\n\n", attributes: attridutes)
     }
 }
