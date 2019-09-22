@@ -10,6 +10,7 @@ import UIKit
 
 final class PostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    private lazy var refreshControl = UIRefreshControl()
 
     var viewModel: PostsViewModel?
 
@@ -18,6 +19,15 @@ final class PostsViewController: UIViewController {
         vc.viewModel = viewModel
         vc.bindViewModel()
         return vc
+    }
+
+    func bindViewModel() {
+        viewModel?.onPostsUpdated = {
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func viewDidLoad() {
@@ -32,15 +42,17 @@ final class PostsViewController: UIViewController {
 
         self.navigationItem.title = "Posts"
 
-        viewModel?.fetchPosts()
+        addRefreshControl()
+        fetchPosts()
     }
 
-    func bindViewModel() {
-        viewModel?.onPostsUpdated = {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+    private func addRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(fetchPosts), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+
+    @objc private func fetchPosts() {
+        viewModel?.fetchPosts()
     }
 }
 
