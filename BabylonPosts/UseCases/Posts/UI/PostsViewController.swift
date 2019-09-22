@@ -43,7 +43,6 @@ final class PostsViewController: UIViewController {
                            forCellReuseIdentifier: PostCell.identifier)
         tableView.rowHeight = UITableView.automaticDimension
 
-        //TODO: need to separate those out
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -58,7 +57,7 @@ final class PostsViewController: UIViewController {
     }
 }
 
-// MARK: View binding
+// MARK: - View binding
 extension PostsViewController {
     func bindViewModel() {
         viewModel?.onPostsUpdated = {
@@ -99,14 +98,16 @@ extension PostsViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension PostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? PostCell {
+        if let cell = tableView.cellForRow(at: indexPath) as? CellTappable {
             cell.tapped()
         }
     }
 }
 
+// MARK: - UITableViewDataSource
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let posts = viewModel?.posts {
@@ -122,9 +123,7 @@ extension PostsViewController: UITableViewDataSource {
         }
 
         if let posts = viewModel?.posts {
-            var postViewModel = DefaultPostViewModel(post: posts[indexPath.row])
-            postViewModel.delegate = viewModel
-            cell.viewModel = postViewModel
+            cell.viewModel = posts[indexPath.row]
         }
 
         return cell

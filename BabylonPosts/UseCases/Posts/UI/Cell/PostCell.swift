@@ -39,7 +39,9 @@ final class PostCell: UITableViewCell {
         backgroundColor = .white
         postTitle.backgroundColor = .white
     }
+}
 
+extension PostCell: CellTappable {
     func tapped() {
         viewModel?.postTapped()
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PostsViewModel: PostViewModelDelegate {
-    var posts: [Post]? { get }
+    var posts: [PostViewModel]? { get }
     var isLoading: Bool { get }
 
     // Simple binding

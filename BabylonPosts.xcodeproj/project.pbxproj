@@ -45,6 +45,7 @@
 		F06128D42336308000E18665 /* PostsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128D32336308000E18665 /* PostsUITests.swift */; };
 		F06128EA233643A400E18665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128E9233643A400E18665 /* Post.swift */; };
 		F06128EF2336469000E18665 /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128EE2336469000E18665 /* PostsNavigator.swift */; };
+		F0A4512F2338312000FEAA79 /* CellTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4512B23382FB400FEAA79 /* CellTappable.swift */; };
 		FACDF31F0872196EA5EC5BA0 /* Pods_BabylonPostsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C249FB04437C559FFEDE6B7D /* Pods_BabylonPostsTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,7 @@
 		F06128E9233643A400E18665 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F06128EB2336452400E18665 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		F06128EE2336469000E18665 /* PostsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsNavigator.swift; sourceTree = "<group>"; };
+		F0A4512B23382FB400FEAA79 /* CellTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTappable.swift; sourceTree = "<group>"; };
 		FA1F5E433FC872428EAFFCEA /* Pods-PostsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsTests.release.xcconfig"; path = "Target Support Files/Pods-PostsTests/Pods-PostsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +187,7 @@
 		F0026E5C23366F8F003DF15B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F0A4512D23382FBA00FEAA79 /* Protocols */,
 				F0026E5D23366FA7003DF15B /* UIViewController+fromNib.swift */,
 			);
 			path = Shared;
@@ -390,6 +393,14 @@
 				F0026E59233669F1003DF15B /* DefaultPostsNavigator.swift */,
 			);
 			path = Navigators;
+			sourceTree = "<group>";
+		};
+		F0A4512D23382FBA00FEAA79 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F0A4512B23382FB400FEAA79 /* CellTappable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -648,6 +659,7 @@
 				F0026EA42337E9B7003DF15B /* Storage.swift in Sources */,
 				F0026E7323369970003DF15B /* Address.swift in Sources */,
 				F0026E862336E3D2003DF15B /* PostsViewController.swift in Sources */,
+				F0A4512F2338312000FEAA79 /* CellTappable.swift in Sources */,
 				F06128B42336307F00E18665 /* AppDelegate.swift in Sources */,
 				F0026E8E2336E73B003DF15B /* NetworkService.swift in Sources */,
 				F0026E69233683C3003DF15B /* PostViewModel.swift in Sources */,

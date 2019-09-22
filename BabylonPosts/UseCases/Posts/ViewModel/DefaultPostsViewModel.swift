@@ -13,7 +13,7 @@ final class DefaultPostsViewModel: PostsViewModel {
     private let dataCoordinator: DataCoordinator
     private let navigator: PostsNavigator
 
-    var posts: [Post]? {
+    var posts: [PostViewModel]? {
         didSet {
             self.onPostsUpdated?()
         }
@@ -45,7 +45,7 @@ final class DefaultPostsViewModel: PostsViewModel {
             dataCoordinator.fetchPosts()
         }.done { posts in
             self.isLoading = false
-            self.posts = posts
+            self.posts = self.createPostViewModels(from: posts)
         }.catch { error in
             self.isLoading = false
             self.handleError(error: error)
@@ -61,6 +61,14 @@ final class DefaultPostsViewModel: PostsViewModel {
     private func handleError(error: Error) {
         DispatchQueue.main.async {
             self.navigator.navigate(to: .error(error: error))
+        }
+    }
+
+    private func createPostViewModels(from posts: [Post]) -> [PostViewModel] {
+        return posts.map {
+            var postViewModel = DefaultPostViewModel(post: $0)
+            postViewModel.delegate = self
+            return postViewModel
         }
     }
 }
