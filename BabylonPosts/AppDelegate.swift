@@ -25,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
 
         let defaultNetworkService = DefaultNetworkService(serviceUrl: ServiceURL.base.rawValue)
+        let defaultStorageService = DefaultStorageService()
+        let defaultDataCoordinator = DefaultDataCoordinator(networkService: defaultNetworkService,
+                                                            storageService: defaultStorageService)
         let postsNavigator = DefaultPostsNavigator(navigationController: navigationViewController,
-                                                   networkService: defaultNetworkService)
+                                                   dataCoordinator: defaultDataCoordinator)
         postsNavigator.navigate(to: .posts)
 
         return true

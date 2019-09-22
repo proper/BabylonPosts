@@ -25,14 +25,14 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
     var onPostDetailUpdated: (() -> Void)?
 
     let post: Post
-    private let networkService: NetworkService
+    private let dataCoordinator: DataCoordinator
     private let navigator: PostsNavigator
 
-    init(post: Post, networkService: NetworkService, navigator: PostsNavigator) {
+    init(post: Post, dataCoordinator: DataCoordinator, navigator: PostsNavigator) {
         self.post = post
         self.description = post.body
         self.title = post.title
-        self.networkService = networkService
+        self.dataCoordinator = dataCoordinator
         self.navigator = navigator
         self.isLoading = false
     }
@@ -42,7 +42,7 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
 
         // Demo the synchronization
         firstly {
-            when(fulfilled: networkService.fetchUser(for: post.userId), networkService.fetchComments(for: post.id))
+            when(fulfilled: dataCoordinator.fetchUser(for: post.userId), dataCoordinator.fetchComments(for: post.id))
         }.done { (user, comments) in
             self.isLoading = false
             self.author = user.name

@@ -10,11 +10,11 @@ import UIKit
 
 final class DefaultPostsNavigator: PostsNavigator {
     private weak var navigationController: UINavigationController?
-    private let networkService: NetworkService
+    private let dataCoordinator: DataCoordinator
 
-    init(navigationController: UINavigationController, networkService: NetworkService) {
+    init(navigationController: UINavigationController, dataCoordinator: DataCoordinator) {
         self.navigationController = navigationController
-        self.networkService = networkService
+        self.dataCoordinator = dataCoordinator
     }
 
     func navigate(to destination: PostsNavigatorDestination) {
@@ -27,12 +27,12 @@ final class DefaultPostsNavigator: PostsNavigator {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             navigationController?.present(alert, animated: true, completion: nil)
         case .posts:
-            let viewModel = DefaultPostsViewModel(networkService: networkService, navigator: self)
+            let viewModel = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: self)
             let postsViewController = PostsViewController.make(with: viewModel)
             navigationController?.pushViewController(postsViewController, animated: true)
         case .postDetail(let post):
             let viewModel = DefaultPostDetailViewModel(post: post,
-                                                       networkService: networkService,
+                                                       dataCoordinator: dataCoordinator,
                                                        navigator: self)
             let postDetailViewController = PostDetailViewController.make(with: viewModel)
             navigationController?.pushViewController(postDetailViewController, animated: true)

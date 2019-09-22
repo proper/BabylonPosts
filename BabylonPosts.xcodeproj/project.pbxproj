@@ -33,6 +33,11 @@
 		F0026E9923370044003DF15B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026E9723370044003DF15B /* PostDetailViewController.swift */; };
 		F0026E9A23370044003DF15B /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0026E9823370044003DF15B /* PostDetailViewController.xib */; };
 		F0026E9C233701A7003DF15B /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026E9B233701A7003DF15B /* DefaultPostDetailViewModel.swift */; };
+		F0026EA42337E9B7003DF15B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026EA32337E9B7003DF15B /* Storage.swift */; };
+		F0026EA62337EACE003DF15B /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026EA52337EACE003DF15B /* StorageService.swift */; };
+		F0026EA82337EB20003DF15B /* DefaultStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026EA72337EB20003DF15B /* DefaultStorageService.swift */; };
+		F0026EAB23380610003DF15B /* DataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026EAA23380610003DF15B /* DataCoordinator.swift */; };
+		F0026EAD23380698003DF15B /* DefaultDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026EAC23380698003DF15B /* DefaultDataCoordinator.swift */; };
 		F06128B42336307F00E18665 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128B32336307F00E18665 /* AppDelegate.swift */; };
 		F06128BB2336308000E18665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F06128BA2336308000E18665 /* Assets.xcassets */; };
 		F06128BE2336308000E18665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06128BC2336308000E18665 /* LaunchScreen.storyboard */; };
@@ -96,6 +101,11 @@
 		F0026E9723370044003DF15B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		F0026E9823370044003DF15B /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
 		F0026E9B233701A7003DF15B /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
+		F0026EA32337E9B7003DF15B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		F0026EA52337EACE003DF15B /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F0026EA72337EB20003DF15B /* DefaultStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStorageService.swift; sourceTree = "<group>"; };
+		F0026EAA23380610003DF15B /* DataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCoordinator.swift; sourceTree = "<group>"; };
+		F0026EAC23380698003DF15B /* DefaultDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDataCoordinator.swift; sourceTree = "<group>"; };
 		F06128B02336307F00E18665 /* BabylonPosts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabylonPosts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06128B32336307F00E18665 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F06128BA2336308000E18665 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,6 +229,8 @@
 		F0026E7C2336DB34003DF15B /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				F0026EA9233805E7003DF15B /* DataCoordinator */,
+				F0026EA22337E9A5003DF15B /* Persistance */,
 				F0026E8C2336E6D8003DF15B /* Network */,
 				F0026E7E2336DB69003DF15B /* API */,
 				F0026E7D2336DB46003DF15B /* Models */,
@@ -265,6 +277,25 @@
 				F0026E952336FBFE003DF15B /* NetworkServiceError.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F0026EA22337E9A5003DF15B /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				F0026EA32337E9B7003DF15B /* Storage.swift */,
+				F0026EA52337EACE003DF15B /* StorageService.swift */,
+				F0026EA72337EB20003DF15B /* DefaultStorageService.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		F0026EA9233805E7003DF15B /* DataCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F0026EAA23380610003DF15B /* DataCoordinator.swift */,
+				F0026EAC23380698003DF15B /* DefaultDataCoordinator.swift */,
+			);
+			path = DataCoordinator;
 			sourceTree = "<group>";
 		};
 		F06128A72336307F00E18665 = {
@@ -610,19 +641,24 @@
 				F06128EF2336469000E18665 /* PostsNavigator.swift in Sources */,
 				F0026E9C233701A7003DF15B /* DefaultPostDetailViewModel.swift in Sources */,
 				F0026E922336EB23003DF15B /* Resource.swift in Sources */,
+				F0026EA62337EACE003DF15B /* StorageService.swift in Sources */,
 				F0026E7B2336AEA4003DF15B /* PostDetailViewModel.swift in Sources */,
 				F0026E792336AB00003DF15B /* Comment.swift in Sources */,
+				F0026EA82337EB20003DF15B /* DefaultStorageService.swift in Sources */,
+				F0026EA42337E9B7003DF15B /* Storage.swift in Sources */,
 				F0026E7323369970003DF15B /* Address.swift in Sources */,
 				F0026E862336E3D2003DF15B /* PostsViewController.swift in Sources */,
 				F06128B42336307F00E18665 /* AppDelegate.swift in Sources */,
 				F0026E8E2336E73B003DF15B /* NetworkService.swift in Sources */,
 				F0026E69233683C3003DF15B /* PostViewModel.swift in Sources */,
 				F0026E6B2336847B003DF15B /* DefaultPostViewModel.swift in Sources */,
+				F0026EAB23380610003DF15B /* DataCoordinator.swift in Sources */,
 				F06128EA233643A400E18665 /* Post.swift in Sources */,
 				F0026E832336E3A3003DF15B /* PostsViewModel.swift in Sources */,
 				F0026E6623368037003DF15B /* PostCell.swift in Sources */,
 				F0026E842336E3A6003DF15B /* DefaultPostsViewModel.swift in Sources */,
 				F0026E942336EC2F003DF15B /* ServiceURL.swift in Sources */,
+				F0026EAD23380698003DF15B /* DefaultDataCoordinator.swift in Sources */,
 				F0026E902336E807003DF15B /* DefaultNetworkService.swift in Sources */,
 				F0026E75233699B9003DF15B /* Geo.swift in Sources */,
 				F0026E822336E39D003DF15B /* DefaultPostsNavigator.swift in Sources */,

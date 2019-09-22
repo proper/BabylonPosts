@@ -10,7 +10,7 @@ import Alamofire
 import PromiseKit
 
 final class DefaultPostsViewModel: PostsViewModel {
-    private let networkService: NetworkService
+    private let dataCoordinator: DataCoordinator
     private let navigator: PostsNavigator
 
     var posts: [Post]? {
@@ -28,8 +28,8 @@ final class DefaultPostsViewModel: PostsViewModel {
     var onLoadingStateChanged: (() -> Void)?
     var onPostsUpdated: (() -> Void)?
 
-    init(networkService: NetworkService, navigator: PostsNavigator) {
-        self.networkService = networkService
+    init(dataCoordinator: DataCoordinator, navigator: PostsNavigator) {
+        self.dataCoordinator = dataCoordinator
         self.navigator = navigator
         self.isLoading = false
     }
@@ -42,7 +42,7 @@ final class DefaultPostsViewModel: PostsViewModel {
         isLoading = true
 
         firstly {
-            networkService.fetchPosts()
+            dataCoordinator.fetchPosts()
         }.done { posts in
             self.isLoading = false
             self.posts = posts
