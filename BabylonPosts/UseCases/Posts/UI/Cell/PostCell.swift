@@ -31,18 +31,16 @@ final class PostCell: UITableViewCell {
         postTitle.text = nil
     }
 
-    func updateUI() {
-        if let viewModel = viewModel {
-            postTitle.text = viewModel.title
-        }
-    }
-
-    func tapped() {
-        viewModel?.postTapped()
+    private func updateUI() {
+        postTitle.text = viewModel?.title
     }
 
     private func configureUIStyle() {
         backgroundColor = .white
         postTitle.backgroundColor = .white
+    }
+
+    func tapped() {
+        viewModel?.postTapped()
     }
 }

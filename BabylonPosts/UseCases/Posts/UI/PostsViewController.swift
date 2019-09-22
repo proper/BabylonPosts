@@ -59,10 +59,11 @@ final class PostsViewController: UIViewController {
     private func setupTableView() {
         tableView.register(UINib(nibName: String(describing: PostCell.self), bundle: nil),
                            forCellReuseIdentifier: PostCell.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+
         //TODO: need to separate those out
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
     }
 
     private func addRefreshControl() {
