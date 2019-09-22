@@ -8,11 +8,17 @@
 
 import UIKit
 
-class PostsViewController: UIViewController {
+final class PostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var viewModel: PostsViewModel?
-    var navigator: PostsNavigator?
+
+    static func make(with viewModel: PostsViewModel) -> PostsViewController {
+        let vc: PostsViewController = PostsViewController.fromNib()
+        vc.viewModel = viewModel
+        vc.bindViewModel()
+        return vc
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +36,7 @@ class PostsViewController: UIViewController {
     }
 
     func bindViewModel() {
-        viewModel?.postsUpdated = {
+        viewModel?.onPostsUpdated = {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -40,8 +46,8 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let posts = viewModel?.posts {
-            navigator?.navigate(to: .postDetail(post: posts[indexPath.row]))
+        if let cell = tableView.cellForRow(at: indexPath) as? PostCell {
+            cell.tapped()
         }
     }
 }
@@ -61,7 +67,9 @@ extension PostsViewController: UITableViewDataSource {
         }
 
         if let posts = viewModel?.posts {
-            cell.configure(viewModel: DefaultPostViewModel(post: posts[indexPath.row]))
+            var postViewModel = DefaultPostViewModel(post: posts[indexPath.row])
+            postViewModel.delegate = viewModel
+            cell.viewModel = postViewModel
         }
 
         return cell

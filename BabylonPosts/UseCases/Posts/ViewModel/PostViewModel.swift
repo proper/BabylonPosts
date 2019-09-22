@@ -8,6 +8,14 @@
 
 import Foundation
 
+protocol PostViewModelDelegate: class {
+    func postTapped(post: Post)
+}
+
 protocol PostViewModel {
+    var delegate: PostViewModelDelegate? { get set }
+    var post: Post { get }
     var title: String { get }
+
+    func postTapped()
 }

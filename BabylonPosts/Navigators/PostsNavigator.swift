@@ -10,7 +10,7 @@ import Foundation
 
 enum PostsNavigatorDestination {
     case back
-    case error(error: NSError)
+    case error(error: Error)
     case posts
     case postDetail(post: Post)
 }

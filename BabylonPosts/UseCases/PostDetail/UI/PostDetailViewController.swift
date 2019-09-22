@@ -8,11 +8,18 @@
 
 import UIKit
 
-class PostDetailViewController: UIViewController {
+final class PostDetailViewController: UIViewController {
     var viewModel: PostDetailViewModel?
     var navigator: PostsNavigator?
 
     @IBOutlet weak var textView: UITextView!
+
+    static func make(with viewModel: PostDetailViewModel) -> PostDetailViewController {
+        let vc: PostDetailViewController = PostDetailViewController.fromNib()
+        vc.viewModel = viewModel
+        vc.bindViewModel()
+        return vc
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,25 +9,58 @@
 import Alamofire
 import PromiseKit
 
-class DefaultPostsViewModel: PostsViewModel {
+final class DefaultPostsViewModel: PostsViewModel {
     private let networkService: NetworkService
+    private let navigator: PostsNavigator
 
-    var posts: [Post]?
+    var posts: [Post]? {
+        didSet {
+            self.onPostsUpdated?()
+        }
+    }
+    var isLoading: Bool {
+        didSet {
+            self.onLoadingStateChanged?()
+        }
+    }
 
-    var postsUpdated: (() -> Void)?
+    // View binding
+    var onLoadingStateChanged: (() -> Void)?
+    var onPostsUpdated: (() -> Void)?
 
-    init(networkService: NetworkService) {
+    init(networkService: NetworkService, navigator: PostsNavigator) {
         self.networkService = networkService
+        self.navigator = navigator
+        self.isLoading = false
     }
 
     func fetchPosts() {
+        guard !isLoading else {
+            return
+        }
+
+        isLoading = true
+
         firstly {
             networkService.fetchPosts()
         }.done { posts in
+            self.isLoading = false
             self.posts = posts
-            self.postsUpdated?()
         }.catch { error in
-            let _ = error
+            self.isLoading = false
+            self.handleError(error: error)
+        }
+    }
+
+    func postTapped(post: Post) {
+        DispatchQueue.main.async {
+            self.navigator.navigate(to: .postDetail(post: post))
+        }
+    }
+
+    func handleError(error: Error) {
+        DispatchQueue.main.async {
+            self.navigator.navigate(to: .error(error: error))
         }
     }
 }

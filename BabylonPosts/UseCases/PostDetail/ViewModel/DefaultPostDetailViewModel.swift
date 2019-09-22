@@ -18,16 +18,18 @@ class DefaultPostDetailViewModel: PostDetailViewModel {
 
     let post: Post
     private let networkService: NetworkService
+    private let navigator: PostsNavigator
 
-    init(post: Post, networkService: NetworkService) {
+    init(post: Post, networkService: NetworkService, navigator: PostsNavigator) {
         self.post = post
         self.description = post.body
         self.title = post.title
         self.networkService = networkService
+        self.navigator = navigator
     }
 
     func fetchPostDetail() {
-        // To demo the synchronization
+        // Demo the synchronization
         firstly {
             when(fulfilled: networkService.fetchUser(for: post.userId), networkService.fetchComments(for: post.id))
         }.done { (user, comments) in
@@ -35,7 +37,13 @@ class DefaultPostDetailViewModel: PostDetailViewModel {
             self.numberOfComments = comments.count
             self.postDetailUpdated?()
         }.catch { error in
-            let _ = error
+            self.handleError(error: error)
+        }
+    }
+
+    private func handleError(error: Error) {
+        DispatchQueue.main.async {
+            self.navigator.navigate(to: .error(error: error))
         }
     }
 }

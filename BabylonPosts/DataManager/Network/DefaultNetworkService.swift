@@ -11,9 +11,9 @@ import PromiseKit
 import Alamofire
 
 class DefaultNetworkService: NetworkService {
-    static let defaultHeader: HTTPHeaders = ["Content-Type": "application/json"]
+    private static let defaultHeader: HTTPHeaders = ["Content-Type": "application/json"]
 
-    let serviceUrl: String
+    private let serviceUrl: String
 
     init(serviceUrl: String) {
         self.serviceUrl = serviceUrl

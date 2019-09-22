@@ -8,11 +8,13 @@
 
 import Foundation
 
-protocol PostsViewModel {
+protocol PostsViewModel: PostViewModelDelegate {
     var posts: [Post]? { get }
+    var isLoading: Bool { get }
 
     // Simple binding
-    var postsUpdated: (() -> Void)? { get set }
+    var onLoadingStateChanged: (() -> Void)? { get set }
+    var onPostsUpdated: (() -> Void)? { get set }
 
     func fetchPosts()
 }

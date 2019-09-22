@@ -8,15 +8,21 @@
 
 import UIKit
 
-class PostCell: UITableViewCell {
+final class PostCell: UITableViewCell {
     static let identifier = "PostCell"
 
     @IBOutlet weak var postTitle: UILabel!
 
+    var viewModel: PostViewModel? {
+        didSet {
+            self.updateUI()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        configureUI()
+        configureUIStyle()
     }
 
     override func prepareForReuse() {
@@ -25,11 +31,17 @@ class PostCell: UITableViewCell {
         postTitle.text = nil
     }
 
-    func configure(viewModel: PostViewModel) {
-        postTitle.text = viewModel.title
+    func updateUI() {
+        if let viewModel = viewModel {
+            postTitle.text = viewModel.title
+        }
     }
 
-    private func configureUI() {
+    func tapped() {
+        viewModel?.postTapped()
+    }
+
+    private func configureUIStyle() {
         backgroundColor = .white
         postTitle.backgroundColor = .white
     }
