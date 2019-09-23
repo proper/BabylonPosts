@@ -34,7 +34,7 @@ final class DefaultNetworkService: NetworkService {
         return fetchData(method: resource.method, route: resource.route)
     }
 
-    private func fetchData<T: Codable>(method: HTTPMethod, route: String) -> Promise<T> {
+    private func fetchData<T: Decodable>(method: HTTPMethod, route: String) -> Promise<T> {
         let url = "\(serviceUrl)\(route)"
 
         return Promise { seal in
