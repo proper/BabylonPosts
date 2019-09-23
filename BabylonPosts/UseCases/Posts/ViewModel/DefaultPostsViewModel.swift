@@ -10,6 +10,7 @@ import Alamofire
 import PromiseKit
 
 final class DefaultPostsViewModel: PostsViewModel {
+    private static let errorHandlerWaitTime: TimeInterval = 0.1
     private let dataCoordinator: DataCoordinator
     private let navigator: PostsNavigator
 
@@ -59,7 +60,8 @@ final class DefaultPostsViewModel: PostsViewModel {
     }
 
     private func handleError(error: Error) {
-        DispatchQueue.main.async {
+        // Wait a bit to avoid the conflicts of UIRefreshControl and UIAlertControl
+        DispatchQueue.main.asyncAfter(deadline: .now() + DefaultPostsViewModel.errorHandlerWaitTime) {
             self.navigator.navigate(to: .error(error: error))
         }
     }

@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = navigationViewController
         window.makeKeyAndVisible()
 
+        // The main services are injected.
         let defaultNetworkService = DefaultNetworkService(serviceUrl: ServiceURL.base.rawValue)
         let defaultStorageService = DefaultStorageService()
         let defaultDataCoordinator = DefaultDataCoordinator(networkService: defaultNetworkService,
