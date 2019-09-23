@@ -14,6 +14,3 @@ target 'BabylonPosts' do
     # Pods for testing
   end
 end
-
-target 'BabylonPostsUITests' do
-end

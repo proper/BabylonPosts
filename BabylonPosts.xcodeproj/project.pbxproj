@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		22C8AEE0B96E0526FAFD9567 /* Pods_BabylonPosts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8CBE206C47B291F8293C4EC /* Pods_BabylonPosts.framework */; };
-		70FF9B6BA6771ED9D86D023D /* Pods_BabylonPostsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BF402CC678AB363CB72A49 /* Pods_BabylonPostsUITests.framework */; };
 		F0026E5E23366FA7003DF15B /* UIViewController+fromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026E5D23366FA7003DF15B /* UIViewController+fromNib.swift */; };
 		F0026E6623368037003DF15B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0026E6423368037003DF15B /* PostCell.swift */; };
 		F0026E6723368037003DF15B /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0026E6523368037003DF15B /* PostCell.xib */; };
@@ -42,7 +41,6 @@
 		F06128BB2336308000E18665 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F06128BA2336308000E18665 /* Assets.xcassets */; };
 		F06128BE2336308000E18665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06128BC2336308000E18665 /* LaunchScreen.storyboard */; };
 		F06128C92336308000E18665 /* PostsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128C82336308000E18665 /* PostsTests.swift */; };
-		F06128D42336308000E18665 /* PostsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128D32336308000E18665 /* PostsUITests.swift */; };
 		F06128EA233643A400E18665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128E9233643A400E18665 /* Post.swift */; };
 		F06128EF2336469000E18665 /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128EE2336469000E18665 /* PostsNavigator.swift */; };
 		F0A4512F2338312000FEAA79 /* CellTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4512B23382FB400FEAA79 /* CellTappable.swift */; };
@@ -52,13 +50,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		F06128C52336308000E18665 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F06128A82336307F00E18665 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F06128AF2336307F00E18665;
-			remoteInfo = Posts;
-		};
-		F06128D02336308000E18665 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F06128A82336307F00E18665 /* Project object */;
 			proxyType = 1;
@@ -116,9 +107,6 @@
 		F06128C42336308000E18665 /* BabylonPostsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabylonPostsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06128C82336308000E18665 /* PostsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTests.swift; sourceTree = "<group>"; };
 		F06128CA2336308000E18665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F06128CF2336308000E18665 /* BabylonPostsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabylonPostsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F06128D32336308000E18665 /* PostsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsUITests.swift; sourceTree = "<group>"; };
-		F06128D52336308000E18665 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F06128E52336435500E18665 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F06128E62336435500E18665 /* PostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsViewController.xib; sourceTree = "<group>"; };
 		F06128E9233643A400E18665 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -143,14 +131,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACDF31F0872196EA5EC5BA0 /* Pods_BabylonPostsTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F06128CC2336308000E18665 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				70FF9B6BA6771ED9D86D023D /* Pods_BabylonPostsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +289,6 @@
 				F0A45133233835D300FEAA79 /* Localizable.strings */,
 				F06128B22336307F00E18665 /* BabylonPosts */,
 				F06128C72336308000E18665 /* BabylonPostsTests */,
-				F06128D22336308000E18665 /* BabylonPostsUITests */,
 				F06128B12336307F00E18665 /* Products */,
 				3CC53411E13E393A3C08EFC8 /* Pods */,
 				8C261B9CC8F844F6B3DC86C5 /* Frameworks */,
@@ -321,7 +300,6 @@
 			children = (
 				F06128B02336307F00E18665 /* BabylonPosts.app */,
 				F06128C42336308000E18665 /* BabylonPostsTests.xctest */,
-				F06128CF2336308000E18665 /* BabylonPostsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -348,15 +326,6 @@
 				F06128CA2336308000E18665 /* Info.plist */,
 			);
 			path = BabylonPostsTests;
-			sourceTree = "<group>";
-		};
-		F06128D22336308000E18665 /* BabylonPostsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F06128D32336308000E18665 /* PostsUITests.swift */,
-				F06128D52336308000E18665 /* Info.plist */,
-			);
-			path = BabylonPostsUITests;
 			sourceTree = "<group>";
 		};
 		F06128E12336432000E18665 /* Posts */ = {
@@ -418,7 +387,7 @@
 				F06128AD2336307F00E18665 /* Frameworks */,
 				F06128AE2336307F00E18665 /* Resources */,
 				F0026E5B23366D4F003DF15B /* SwiftLint */,
-				3D528A16055CCB57E7A319F2 /* [CP] Embed Pods Frameworks */,
+				891E6EC94C5078C6F7998722 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -448,25 +417,6 @@
 			productReference = F06128C42336308000E18665 /* BabylonPostsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F06128CE2336308000E18665 /* BabylonPostsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F06128DE2336308000E18665 /* Build configuration list for PBXNativeTarget "BabylonPostsUITests" */;
-			buildPhases = (
-				F3BDB9D18F1A47E0C476C8BB /* [CP] Check Pods Manifest.lock */,
-				F06128CB2336308000E18665 /* Sources */,
-				F06128CC2336308000E18665 /* Frameworks */,
-				F06128CD2336308000E18665 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F06128D12336308000E18665 /* PBXTargetDependency */,
-			);
-			name = BabylonPostsUITests;
-			productName = PostsUITests;
-			productReference = F06128CF2336308000E18665 /* BabylonPostsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -481,10 +431,6 @@
 						CreatedOnToolsVersion = 10.3;
 					};
 					F06128C32336308000E18665 = {
-						CreatedOnToolsVersion = 10.3;
-						TestTargetID = F06128AF2336307F00E18665;
-					};
-					F06128CE2336308000E18665 = {
 						CreatedOnToolsVersion = 10.3;
 						TestTargetID = F06128AF2336307F00E18665;
 					};
@@ -505,7 +451,6 @@
 			targets = (
 				F06128AF2336307F00E18665 /* BabylonPosts */,
 				F06128C32336308000E18665 /* BabylonPostsTests */,
-				F06128CE2336308000E18665 /* BabylonPostsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -531,33 +476,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F06128CD2336308000E18665 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D528A16055CCB57E7A319F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		46A2BC4D3D0322EBE44381BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -578,6 +499,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		891E6EC94C5078C6F7998722 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BabylonPosts/Pods-BabylonPosts-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E62B1BB19094E9CB325D4EA3 /* [CP] Check Pods Manifest.lock */ = {
@@ -619,28 +557,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
-		F3BDB9D18F1A47E0C476C8BB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BabylonPostsUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -690,14 +606,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F06128CB2336308000E18665 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F06128D42336308000E18665 /* PostsUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -705,11 +613,6 @@
 			isa = PBXTargetDependency;
 			target = F06128AF2336307F00E18665 /* BabylonPosts */;
 			targetProxy = F06128C52336308000E18665 /* PBXContainerItemProxy */;
-		};
-		F06128D12336308000E18665 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F06128AF2336307F00E18665 /* BabylonPosts */;
-			targetProxy = F06128D02336308000E18665 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -935,50 +838,6 @@
 			};
 			name = Release;
 		};
-		F06128DF2336308000E18665 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6018C06F77DEED8D512FFF8E /* Pods-BabylonPostsUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5A2PZNBSV4;
-				INFOPLIST_FILE = BabylonPostsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alsyapps.demos.BabylonPostsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BabylonPosts;
-			};
-			name = Debug;
-		};
-		F06128E02336308000E18665 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8B62EF7B2D670B75D78B441 /* Pods-BabylonPostsUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5A2PZNBSV4;
-				INFOPLIST_FILE = BabylonPostsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.alsyapps.demos.BabylonPostsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BabylonPosts;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1005,15 +864,6 @@
 			buildConfigurations = (
 				F06128DC2336308000E18665 /* Debug */,
 				F06128DD2336308000E18665 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F06128DE2336308000E18665 /* Build configuration list for PBXNativeTarget "BabylonPostsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F06128DF2336308000E18665 /* Debug */,
-				F06128E02336308000E18665 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -559,10 +559,10 @@ extension AFError.ResponseSerializationFailureReason {
             return encoding
         case .inputDataNilOrZeroLength,
              .inputFileNil,
-             .inputFileReadFailed,
-             .jsonSerializationFailed,
-             .decodingFailed,
-             .customSerializationFailed,
+             .inputFileReadFailed(_),
+             .jsonSerializationFailed(_),
+             .decodingFailed(_),
+             .customSerializationFailed(_),
              .invalidEmptyResponse:
             return nil
         }
