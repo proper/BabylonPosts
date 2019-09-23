@@ -46,6 +46,7 @@
 		F06128EA233643A400E18665 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128E9233643A400E18665 /* Post.swift */; };
 		F06128EF2336469000E18665 /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06128EE2336469000E18665 /* PostsNavigator.swift */; };
 		F0A4512F2338312000FEAA79 /* CellTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A4512B23382FB400FEAA79 /* CellTappable.swift */; };
+		F0A45135233835D300FEAA79 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0A45133233835D300FEAA79 /* Localizable.strings */; };
 		FACDF31F0872196EA5EC5BA0 /* Pods_BabylonPostsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C249FB04437C559FFEDE6B7D /* Pods_BabylonPostsTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		F06128EB2336452400E18665 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		F06128EE2336469000E18665 /* PostsNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsNavigator.swift; sourceTree = "<group>"; };
 		F0A4512B23382FB400FEAA79 /* CellTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTappable.swift; sourceTree = "<group>"; };
+		F0A45134233835D300FEAA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = BabylonPosts/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA1F5E433FC872428EAFFCEA /* Pods-PostsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsTests.release.xcconfig"; path = "Target Support Files/Pods-PostsTests/Pods-PostsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -304,6 +306,7 @@
 		F06128A72336307F00E18665 = {
 			isa = PBXGroup;
 			children = (
+				F0A45133233835D300FEAA79 /* Localizable.strings */,
 				F06128B22336307F00E18665 /* BabylonPosts */,
 				F06128C72336308000E18665 /* BabylonPostsTests */,
 				F06128D22336308000E18665 /* BabylonPostsUITests */,
@@ -328,8 +331,8 @@
 			children = (
 				F0026E812336E2A5003DF15B /* UseCases */,
 				F0026E7C2336DB34003DF15B /* DataManager */,
-				F0026E5C23366F8F003DF15B /* Shared */,
 				F06128ED2336466C00E18665 /* Navigators */,
+				F0026E5C23366F8F003DF15B /* Shared */,
 				F06128B32336307F00E18665 /* AppDelegate.swift */,
 				F06128BA2336308000E18665 /* Assets.xcassets */,
 				F06128BC2336308000E18665 /* LaunchScreen.storyboard */,
@@ -513,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0026E852336E3AE003DF15B /* PostsViewController.xib in Resources */,
+				F0A45135233835D300FEAA79 /* Localizable.strings in Resources */,
 				F06128BE2336308000E18665 /* LaunchScreen.storyboard in Resources */,
 				F0026E9A23370044003DF15B /* PostDetailViewController.xib in Resources */,
 				F06128BB2336308000E18665 /* Assets.xcassets in Resources */,
@@ -718,6 +722,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		F0A45133233835D300FEAA79 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0A45134233835D300FEAA79 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -725,6 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -786,6 +799,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

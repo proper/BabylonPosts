@@ -21,10 +21,12 @@ final class DefaultPostsNavigator: PostsNavigator {
         switch destination {
         case .back:
             navigationController?.popViewController(animated: true)
-        case .error(let error):
+        case .error:
             // Simple error handling here, can be extened to perform actions such as refresh if needed
-            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            let title = NSLocalizedString("error_generic_title", comment: "")
+            let message = NSLocalizedString("error_generic_message", comment: "")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .cancel, handler: nil))
             navigationController?.present(alert, animated: true, completion: nil)
         case .posts:
             let viewModel = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: self)

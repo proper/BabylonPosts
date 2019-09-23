@@ -57,7 +57,7 @@ extension PostDetailViewController {
 
         if viewModel?.isLoading ?? false {
             hud = JGProgressHUD(style: .light)
-            hud?.textLabel.text = "Loading"
+            hud?.textLabel.text = NSLocalizedString("post_detail_hud_loading", comment: "")
             hud?.show(in: view)
         }
     }
@@ -67,30 +67,52 @@ extension PostDetailViewController {
 extension PostDetailViewController {
     private var attributedTextViewString: NSAttributedString {
         let str = NSMutableAttributedString()
-        str.append(attributedAuthorString)
-        str.append(attributedCommentsString)
-        str.append(attributedDescriptionString)
+        if let author = attributedAuthorString {
+            str.append(author)
+        }
+        if let comments = attributedCommentsString {
+            str.append(comments)
+        }
+        if let description = attributedDescriptionString {
+            str.append(description)
+        }
         return str
     }
 
-    private var attributedAuthorString: NSAttributedString {
+    private var attributedAuthorString: NSAttributedString? {
+        guard let authorString = viewModel?.author else { return nil }
+
+        let authorFormat = NSLocalizedString("post_detail_author", comment: "")
+        let formattedAuthorString = String(format: authorFormat, authorString)
+
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 20),
                                                          .paragraphStyle: paragraph]
-        return NSAttributedString(string: "\(viewModel?.author ?? "")\n\n", attributes: attridutes)
+
+        return NSAttributedString(string: formattedAuthorString, attributes: attridutes)
     }
 
-    private var attributedDescriptionString: NSAttributedString {
-        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16)]
-        return NSAttributedString(string: "\(viewModel?.description ?? "")\n\n", attributes: attridutes)
-    }
+    private var attributedCommentsString: NSAttributedString? {
+        guard let numberOfComments = viewModel?.numberOfComments else { return nil }
 
-    private var attributedCommentsString: NSAttributedString {
+        let numberOfCommentsFormat = NSLocalizedString("post_detail_comments", comment: "")
+        let numberOfCommentsString = String(format: numberOfCommentsFormat, numberOfComments)
+
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .center
         let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 14),
                                                          .paragraphStyle: paragraph]
-        return NSAttributedString(string: "\(viewModel?.numberOfComments ?? 0) comments\n\n", attributes: attridutes)
+        return NSAttributedString(string: numberOfCommentsString, attributes: attridutes)
+    }
+
+    private var attributedDescriptionString: NSAttributedString? {
+        guard let descriptionString = viewModel?.description else { return nil }
+
+        let descriptionFormat = NSLocalizedString("post_detail_description", comment: "")
+        let formattedDescriptionString = String(format: descriptionFormat, descriptionString)
+
+        let attridutes: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 16)]
+        return NSAttributedString(string: formattedDescriptionString, attributes: attridutes)
     }
 }

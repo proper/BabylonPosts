@@ -35,7 +35,7 @@ final class PostsViewController: UIViewController {
     }
 
     private func setupUI() {
-        navigationItem.title = "Posts"
+        navigationItem.title = NSLocalizedString("posts_navigation_title", comment: "")
     }
 
     private func setupTableView() {
@@ -88,7 +88,7 @@ extension PostsViewController {
     private func startLoading() {
         hud?.dismiss()
         hud = JGProgressHUD(style: .light)
-        hud?.textLabel.text = "Loading"
+        hud?.textLabel.text = NSLocalizedString("posts_hud_loading", comment: "")
         hud?.show(in: view)
     }
 

@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  BabylonPosts
+
+  Created by Li Linyu on 23/09/2019.
+  Copyright © 2019 Li Linyu. All rights reserved.
+*/
+
+// MARK: - Generic
+
+"ok" = "OK";
+
+// MARK: - Error
+
+"error_generic_title" = "Oops";
+"error_generic_message" = "Something is wrong. Please try again later.";
+
+// MARK: - Posts
+
+"posts_navigation_title" = "Posts";
+"posts_hud_loading" = "Loading posts...";
+
+// MARK: - Post detail
+
+"post_detail_hud_loading" = "Loading post detail...";
+"post_detail_author" = "%@\n\n";
+"post_detail_description" = "%@\n\n";
+"post_detail_comments" = "%d comments\n\n";
