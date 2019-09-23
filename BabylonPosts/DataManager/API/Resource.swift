@@ -18,7 +18,7 @@ enum Resource {
         case .posts:
             return (.get, "/posts")
         case .user(let userId):
-            return (.get, "/users?id=\(userId)")
+            return (.get, "/users/\(userId)")
         case .comments(let postId):
             return (.get, "/comments?postId=\(postId)")
         }
