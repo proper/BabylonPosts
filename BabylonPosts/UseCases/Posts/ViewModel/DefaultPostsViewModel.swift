@@ -10,7 +10,6 @@ import Alamofire
 import PromiseKit
 
 final class DefaultPostsViewModel: PostsViewModel {
-    private static let errorHandlerWaitTime: TimeInterval = 0.1
     private let dataCoordinator: DataCoordinator
     private let navigator: PostsNavigator
 
@@ -35,7 +34,15 @@ final class DefaultPostsViewModel: PostsViewModel {
         self.isLoading = false
     }
 
-    func fetchPosts() {
+    func viewDidLoad() {
+        fetchPosts()
+    }
+
+    func refreshStarted() {
+        fetchPosts()
+    }
+
+    private func fetchPosts() {
         guard !isLoading else {
             return
         }
@@ -54,16 +61,11 @@ final class DefaultPostsViewModel: PostsViewModel {
     }
 
     func postTapped(post: Post) {
-        DispatchQueue.main.async {
-            self.navigator.navigate(to: .postDetail(post: post))
-        }
+        navigator.navigate(to: .postDetail(post: post))
     }
 
     private func handleError(error: Error) {
-        // Wait a bit to avoid the conflicts of UIRefreshControl and UIAlertControl
-        DispatchQueue.main.asyncAfter(deadline: .now() + DefaultPostsViewModel.errorHandlerWaitTime) {
-            self.navigator.navigate(to: .error(error: error))
-        }
+        navigator.navigate(to: .error(error: error))
     }
 
     private func createPostViewModels(from posts: [Post]) -> [PostViewModel] {

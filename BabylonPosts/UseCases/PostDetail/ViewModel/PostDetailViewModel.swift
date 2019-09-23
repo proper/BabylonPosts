@@ -20,5 +20,6 @@ protocol PostDetailViewModel {
     var onLoadingStateChanged: (() -> Void)? { get set }
     var onPostDetailUpdated: (() -> Void)? { get set }
 
-    func fetchPostDetail()
+    // View events
+    func viewDidLoad()
 }

@@ -16,5 +16,7 @@ protocol PostsViewModel: PostViewModelDelegate {
     var onLoadingStateChanged: (() -> Void)? { get set }
     var onPostsUpdated: (() -> Void)? { get set }
 
-    func fetchPosts()
+    // View events
+    func viewDidLoad()
+    func refreshStarted()
 }

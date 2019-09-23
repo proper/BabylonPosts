@@ -28,14 +28,14 @@ final class PostsViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        setupTableView()
-        addRefreshControl()
-
-        fetchPosts()
+        viewModel?.viewDidLoad()
     }
 
     private func setupUI() {
         navigationItem.title = NSLocalizedString("posts_navigation_title", comment: "")
+
+        setupTableView()
+        addRefreshControl()
     }
 
     private func setupTableView() {
@@ -48,25 +48,24 @@ final class PostsViewController: UIViewController {
     }
 
     private func addRefreshControl() {
-        refreshControl.addTarget(self, action: #selector(fetchPosts), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshStarted), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
 
-    @objc private func fetchPosts() {
-        viewModel?.fetchPosts()
+    @objc private func refreshStarted() {
+        viewModel?.refreshStarted()
     }
 }
 
 // MARK: - View binding
 extension PostsViewController {
     func bindViewModel() {
-        viewModel?.onPostsUpdated = {
-            DispatchQueue.main.async {
-                self.onPostsUpdated()
-            }
+        viewModel?.onPostsUpdated = { [weak self] in
+            self?.onPostsUpdated()
         }
 
         viewModel?.onLoadingStateChanged = {
+            // A JGProgressHUD bug requires the hub's update to be added later
             DispatchQueue.main.async {
                 self.onLoadingStateChanged()
             }
@@ -86,7 +85,6 @@ extension PostsViewController {
     }
 
     private func startLoading() {
-        hud?.dismiss()
         hud = JGProgressHUD(style: .light)
         hud?.textLabel.text = NSLocalizedString("posts_hud_loading", comment: "")
         hud?.show(in: view)

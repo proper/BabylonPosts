@@ -37,7 +37,11 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
         self.isLoading = false
     }
 
-    func fetchPostDetail() {
+    func viewDidLoad() {
+        fetchPostDetail()
+    }
+
+    private func fetchPostDetail() {
         isLoading = true
 
         // Demo the synchronization
@@ -55,8 +59,6 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
     }
 
     private func handleError(error: Error) {
-        DispatchQueue.main.async {
-            self.navigator.navigate(to: .error(error: error))
-        }
+        navigator.navigate(to: .error(error: error))
     }
 }

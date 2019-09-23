@@ -27,20 +27,19 @@ final class PostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel?.fetchPostDetail()
+        viewModel?.viewDidLoad()
     }
 }
 
 // MARK: View binding
 extension PostDetailViewController {
     func bindViewModel() {
-        viewModel?.onPostDetailUpdated = {
-            DispatchQueue.main.async {
-                self.onPostDetailUpdated()
-            }
+        viewModel?.onPostDetailUpdated = { [weak self] in
+            self?.onPostDetailUpdated()
         }
 
         viewModel?.onLoadingStateChanged = {
+            // A JGProgressHUD bug requires the hub's update to be added later
             DispatchQueue.main.async {
                 self.onLoadingStateChanged()
             }
@@ -48,7 +47,7 @@ extension PostDetailViewController {
     }
 
     private func onPostDetailUpdated() {
-        textView.attributedText = self.attributedTextViewString
+        textView.attributedText = attributedTextViewString
         navigationItem.title = viewModel?.title ?? ""
     }
 
