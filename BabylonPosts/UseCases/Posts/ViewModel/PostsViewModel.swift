@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import PromiseKit
+
+protocol PostsDataCoordinator {
+    func fetchPosts() -> Promise<[Post]>
+}
 
 protocol PostsViewModel: PostViewModelDelegate {
+    var dataCoordinator: PostsDataCoordinator { get }
     var posts: [PostViewModel]? { get }
     var isLoading: Bool { get }
 

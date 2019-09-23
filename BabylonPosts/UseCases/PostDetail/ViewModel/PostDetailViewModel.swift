@@ -7,8 +7,15 @@
 //
 
 import Foundation
+import PromiseKit
+
+protocol PostDetailDataCoordinator {
+    func fetchUser(for userId: Int) -> Promise<User>
+    func fetchComments(for postId: Int) -> Promise<[Comment]>
+}
 
 protocol PostDetailViewModel {
+    var dataCoordinator: PostDetailDataCoordinator { get }
     var post: Post { get }
     var description: String? { get }
     var author: String? { get }

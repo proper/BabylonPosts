@@ -10,7 +10,7 @@ import Alamofire
 import PromiseKit
 
 final class DefaultPostsViewModel: PostsViewModel {
-    private let dataCoordinator: DataCoordinator
+    let dataCoordinator: PostsDataCoordinator
     private let navigator: PostsNavigator
 
     var posts: [PostViewModel]? {
@@ -28,7 +28,7 @@ final class DefaultPostsViewModel: PostsViewModel {
     var onLoadingStateChanged: (() -> Void)?
     var onPostsUpdated: (() -> Void)?
 
-    init(dataCoordinator: DataCoordinator, navigator: PostsNavigator) {
+    init(dataCoordinator: PostsDataCoordinator, navigator: PostsNavigator) {
         self.dataCoordinator = dataCoordinator
         self.navigator = navigator
         self.isLoading = false

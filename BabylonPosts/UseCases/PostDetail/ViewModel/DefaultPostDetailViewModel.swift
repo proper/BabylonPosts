@@ -6,6 +6,7 @@
 //  Copyright © 2019 Li Linyu. All rights reserved.
 //
 
+import Foundation
 import PromiseKit
 
 final class DefaultPostDetailViewModel: PostDetailViewModel {
@@ -25,10 +26,10 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
     var onPostDetailUpdated: (() -> Void)?
 
     let post: Post
-    private let dataCoordinator: DataCoordinator
+    let dataCoordinator: PostDetailDataCoordinator
     private let navigator: PostsNavigator
 
-    init(post: Post, dataCoordinator: DataCoordinator, navigator: PostsNavigator) {
+    init(post: Post, dataCoordinator: PostDetailDataCoordinator, navigator: PostsNavigator) {
         self.post = post
         self.description = post.body
         self.title = post.title

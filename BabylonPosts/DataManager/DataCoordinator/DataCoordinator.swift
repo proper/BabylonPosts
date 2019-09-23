@@ -7,10 +7,6 @@
 //
 
 import Foundation
-import PromiseKit
 
-protocol DataCoordinator {
-    func fetchPosts() -> Promise<[Post]>
-    func fetchUser(for userId: Int) -> Promise<User>
-    func fetchComments(for postId: Int) -> Promise<[Comment]>
+protocol DataCoordinator: PostsDataCoordinator, PostDetailDataCoordinator {
 }
