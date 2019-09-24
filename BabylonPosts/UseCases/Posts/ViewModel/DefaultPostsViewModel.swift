@@ -65,7 +65,11 @@ final class DefaultPostsViewModel: PostsViewModel {
     }
 
     private func handleError(error: Error) {
-        navigator.navigate(to: .error(error: error))
+        let mainAction = ErrorAction(title: NSLocalizedString("error_button_retry", comment: "")) { [weak self] in
+            self?.fetchPosts()
+        }
+        let cancelAction = ErrorAction(title: NSLocalizedString("ok", comment: ""), action: nil)
+        navigator.navigate(to: .error(error: error, mainAction: mainAction, cancelAction: cancelAction))
     }
 
     private func createPostViewModels(from posts: [Post]) -> [PostViewModel] {

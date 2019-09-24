@@ -8,9 +8,14 @@
 
 import Foundation
 
+struct ErrorAction {
+    let title: String
+    var action: (() -> Void)?
+}
+
 enum PostsNavigatorDestination {
     case back
-    case error(error: Error)
+    case error(error: Error, mainAction: ErrorAction?, cancelAction: ErrorAction)
     case posts
     case postDetail(post: Post)
 }

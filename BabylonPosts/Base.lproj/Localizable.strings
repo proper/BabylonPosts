@@ -13,7 +13,8 @@
 // MARK: - Error
 
 "error_generic_title" = "Oops";
-"error_generic_message" = "Something is wrong. Please try again later.";
+"error_generic_message" = "Something is wrong.";
+"error_button_retry" = "Retry";
 
 // MARK: - Posts
 

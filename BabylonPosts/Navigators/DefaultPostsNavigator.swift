@@ -21,12 +21,9 @@ final class DefaultPostsNavigator: PostsNavigator {
         switch destination {
         case .back:
             navigationController?.popViewController(animated: true)
-        case .error:
+        case .error(let error, let mainAction, let cancelAction):
             // Simple error handling here, can be extened to perform actions such as refresh if needed
-            let title = NSLocalizedString("error_generic_title", comment: "")
-            let message = NSLocalizedString("error_generic_message", comment: "")
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .cancel, handler: nil))
+            let alert = createAlertController(error: error, mainAction: mainAction, cancelAction: cancelAction)
             navigationController?.present(alert, animated: true, completion: nil)
         case .posts:
             let viewModel = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: self)
@@ -39,5 +36,26 @@ final class DefaultPostsNavigator: PostsNavigator {
             let postDetailViewController = PostDetailViewController.make(with: viewModel)
             navigationController?.pushViewController(postDetailViewController, animated: true)
         }
+    }
+
+    private func createAlertController(error: Error,
+                                       mainAction: ErrorAction?, cancelAction: ErrorAction) -> UIAlertController {
+        let title = NSLocalizedString("error_generic_title", comment: "")
+        let message = NSLocalizedString("error_generic_message", comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        if let mainAction = mainAction {
+            let action = UIAlertAction(title: mainAction.title, style: .default) { _ in
+                mainAction.action?()
+            }
+            alert.addAction(action)
+        }
+
+        let cancel = UIAlertAction(title: cancelAction.title, style: .cancel) { _ in
+            cancelAction.action?()
+        }
+        alert.addAction(cancel)
+
+        return alert
     }
 }

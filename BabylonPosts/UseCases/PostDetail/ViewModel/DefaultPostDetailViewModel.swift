@@ -60,6 +60,12 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
     }
 
     private func handleError(error: Error) {
-        navigator.navigate(to: .error(error: error))
+        let mainAction = ErrorAction(title: NSLocalizedString("error_button_retry", comment: "")) { [weak self] in
+            self?.fetchPostDetail()
+        }
+        let cancelAction = ErrorAction(title: NSLocalizedString("ok", comment: "")) { [weak self] in
+            self?.navigator.navigate(to: .back)
+        }
+        navigator.navigate(to: .error(error: error, mainAction: mainAction, cancelAction: cancelAction))
     }
 }
