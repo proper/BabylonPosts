@@ -8,6 +8,7 @@
 
 import Foundation
 import PromiseKit
+import Alamofire
 
 class DefaultDataCoordinator: DataCoordinator {
     private let networkService: NetworkService
@@ -26,7 +27,7 @@ class DefaultDataCoordinator: DataCoordinator {
                 self.storageService.storePosts(posts: posts)
                 seal.resolve(posts, nil)
             }.catch { error in
-                if let posts = self.storageService.getPosts() {
+                if error.isOfflineError, let posts = self.storageService.getPosts() {
                     seal.resolve(posts, nil)
                 } else {
                     seal.resolve(nil, error)
@@ -43,7 +44,7 @@ class DefaultDataCoordinator: DataCoordinator {
                 self.storageService.storeUser(user: user)
                 seal.resolve(user, nil)
             }.catch { error in
-                if let user = self.storageService.getUser(for: userId) {
+                if error.isOfflineError, let user = self.storageService.getUser(for: userId) {
                     seal.resolve(user, nil)
                 } else {
                     seal.resolve(nil, error)
@@ -61,12 +62,25 @@ class DefaultDataCoordinator: DataCoordinator {
                 self.storageService.storeComments(comments: comments, for: postId)
                 seal.resolve(comments, nil)
             }.catch { error in
-                if let comments = self.storageService.getComments(for: postId) {
+                if error.isOfflineError, let comments = self.storageService.getComments(for: postId) {
                     seal.resolve(comments, nil)
                 } else {
                     seal.resolve(nil, error)
                 }
             }
         }
+    }
+}
+
+// MARK: - Check if the error is an offline error
+private extension Error {
+    var isOfflineError: Bool {
+        if let afError = self as? AFError,
+            let nsError = afError.underlyingError as NSError?,
+            nsError.code == NSURLErrorNotConnectedToInternet {
+            return true
+        }
+        
+        return false
     }
 }
