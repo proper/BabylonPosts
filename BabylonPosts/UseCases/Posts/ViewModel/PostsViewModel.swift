@@ -15,6 +15,7 @@ protocol PostsDataCoordinator {
 
 protocol PostsViewModel: PostViewModelDelegate {
     var dataCoordinator: PostsDataCoordinator { get }
+    var navigator: PostsNavigator { get }
     var posts: [PostViewModel]? { get }
     var isLoading: Bool { get }
 

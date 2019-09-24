@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaultStorageService = DefaultStorageService()
         let defaultDataCoordinator = DefaultDataCoordinator(networkService: defaultNetworkService,
                                                             storageService: defaultStorageService)
-        let postsNavigator = DefaultPostsNavigator(navigationController: navigationViewController,
+        let appNavigator = DefaultAppNavigator(navigationController: navigationViewController,
                                                    dataCoordinator: defaultDataCoordinator)
-        postsNavigator.navigate(to: .posts)
+        appNavigator.navigate(to: .posts)
 
         return true
     }

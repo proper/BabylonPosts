@@ -27,9 +27,9 @@ final class DefaultPostDetailViewModel: PostDetailViewModel {
 
     let post: Post
     let dataCoordinator: PostDetailDataCoordinator
-    private let navigator: PostsNavigator
+    let navigator: PostDetailNavigator
 
-    init(post: Post, dataCoordinator: PostDetailDataCoordinator, navigator: PostsNavigator) {
+    init(post: Post, dataCoordinator: PostDetailDataCoordinator, navigator: PostDetailNavigator) {
         self.post = post
         self.description = post.body
         self.title = post.title

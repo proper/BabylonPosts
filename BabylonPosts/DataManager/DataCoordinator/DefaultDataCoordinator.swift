@@ -80,7 +80,7 @@ private extension Error {
             nsError.code == NSURLErrorNotConnectedToInternet {
             return true
         }
-        
+
         return false
     }
 }

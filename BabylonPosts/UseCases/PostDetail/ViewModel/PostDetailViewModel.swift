@@ -16,6 +16,7 @@ protocol PostDetailDataCoordinator {
 
 protocol PostDetailViewModel {
     var dataCoordinator: PostDetailDataCoordinator { get }
+    var navigator: PostDetailNavigator { get }
     var post: Post { get }
     var description: String? { get }
     var author: String? { get }

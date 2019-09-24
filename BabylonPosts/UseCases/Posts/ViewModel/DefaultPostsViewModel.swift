@@ -11,7 +11,7 @@ import PromiseKit
 
 final class DefaultPostsViewModel: PostsViewModel {
     let dataCoordinator: PostsDataCoordinator
-    private let navigator: PostsNavigator
+    let navigator: PostsNavigator
 
     var posts: [PostViewModel]? {
         didSet {
