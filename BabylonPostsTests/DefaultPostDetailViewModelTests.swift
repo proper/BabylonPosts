@@ -8,20 +8,11 @@
 
 import XCTest
 @testable import BabylonPosts
-import PromiseKit
 
 class DefaultPostDetailViewModelTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func test_ViewDidLoadToFetchPostDetail_Successfully() {
         let post = Post(userId: 1, id: 1, title: "TestTitle", body: "TestBody")
+        
         let dataCoordinator = MockPostDetailDataCoordinator()
         let comments: [Comment] = getAsset(from: "comments_1", ofType: "json")!
         dataCoordinator.commentsToReturn = comments
@@ -47,6 +38,11 @@ class DefaultPostDetailViewModelTests: XCTestCase {
         }
         
         sut.onPostDetailUpdated = {
+            XCTAssertEqual(sut.author, user.name)
+            XCTAssertEqual(sut.description, post.body)
+            XCTAssertEqual(sut.numberOfComments, comments.count)
+            XCTAssertEqual(sut.title, post.title)
+            XCTAssertFalse(sut.isLoading)
             postDetailUpdatedExpectation.fulfill()
         }
         
@@ -54,45 +50,41 @@ class DefaultPostDetailViewModelTests: XCTestCase {
         
         waitForExpectations(timeout: 0.5, handler: nil)
     }
-
-}
-
-class MockPostDetailDataCoordinator: PostDetailDataCoordinator {
-    var errorToReturn: Error?
-    var userToReturn: User?
-    var commentsToReturn: [Comment]?
     
-    func fetchUser(for userId: Int) -> Promise<User> {
-        return Promise { seal in
-            if let errorToReturn = errorToReturn {
-                seal.resolve(nil, errorToReturn)
-            } else if let userToReturn = userToReturn {
-                seal.resolve(userToReturn, nil)
+    func test_ViewDidLoadToFetchPostDetail_FailedWithError() {
+        let post = Post(userId: 1, id: 1, title: "TestTitle", body: "TestBody")
+        
+        let dataCoordinator = MockPostDetailDataCoordinator()
+        let error = NSError(domain: "", code: -1009, userInfo: nil)
+        dataCoordinator.errorToReturn = error
+        
+        let navigator = MockPostDetailNavigator()
+        navigator.errorNavigatedExpectation = expectation(description: "Should navigate to show the error")
+        navigator.errorToCompare = error
+        navigator.mainErrorActionToCompare = ErrorAction(title: "Retry", action: nil)
+        navigator.cancelErrorActionToCompare = ErrorAction(title: "OK", action: nil)
+        
+        let sut = DefaultPostDetailViewModel(post: post,
+                                             dataCoordinator: dataCoordinator,
+                                             navigator: navigator)
+        
+        let loadingStartedExpectation = expectation(description: "Loading should be started")
+        let loadingEndedExpectation = expectation(description: "Loading ended expectation")
+        
+        sut.onLoadingStateChanged = {
+            if sut.isLoading {
+                loadingStartedExpectation.fulfill()
+            } else {
+                loadingEndedExpectation.fulfill()
             }
         }
-    }
-    
-    func fetchComments(for postId: Int) -> Promise<[Comment]> {
-        return Promise { seal in
-            if let errorToReturn = errorToReturn {
-                seal.resolve(nil, errorToReturn)
-            } else if let commentsToReturn = commentsToReturn {
-                seal.resolve(commentsToReturn, nil)
-            }
+        
+        sut.onPostDetailUpdated = {
+            XCTFail("onPostDetailUpdated should not be called")
         }
-    }
-}
-
-class MockPostDetailNavigator: PostDetailNavigator {
-    var backNavigatedExpectation: XCTestExpectation?
-    var errorNavigatedExpectation: XCTestExpectation?
-    
-    func navigate(to destination: PostDetailNavigatorDestination) {
-        switch destination {
-        case .back:
-            backNavigatedExpectation?.fulfill()
-        case .error(let error, let mainAction, let cancelAction):
-            errorNavigatedExpectation?.fulfill()
-        }
+        
+        sut.viewDidLoad()
+        
+        waitForExpectations(timeout: 0.5, handler: nil)
     }
 }
