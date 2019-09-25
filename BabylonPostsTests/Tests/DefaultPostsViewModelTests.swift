@@ -8,7 +8,6 @@
 
 import XCTest
 @testable import BabylonPosts
-import PromiseKit
 
 class DefaultPostsViewModelTests: XCTestCase {
     private var dataCoordinator: MockPostsDataCoordinator!
@@ -29,10 +28,16 @@ class DefaultPostsViewModelTests: XCTestCase {
     }
 
     func test_ViewDidLoadToFetchPosts_Successfully() {
-        // GIVEN The sut is created with a dataCoordinator and a navigator
+        // GIVEN dummy posts should be returned
         let posts: [Post] = getAsset(from: "posts", ofType: "json")!
         dataCoordinator.postsToReturn = posts
+
+        // GIVEN The sut is created with a dataCoordinator and a navigator
         let sut = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: navigator)
+
+        // THEN the sut is not loading and has nil posts
+        XCTAssertFalse(sut.isLoading)
+        XCTAssertNil(sut.posts)
 
         // GIVEN we expect the posts to be updated
         let postsUpdatedExpectation = expectation(description: "Posts should be updated")
@@ -79,6 +84,10 @@ class DefaultPostsViewModelTests: XCTestCase {
 
         // GIVEN The sut is created with a dataCoordinator and a navigator
         let sut = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: navigator)
+
+        // THEN the sut is not loading and has nil posts
+        XCTAssertFalse(sut.isLoading)
+        XCTAssertNil(sut.posts)
         
         sut.onPostsUpdated = {
             // TEHN the posts should not be updated
@@ -116,6 +125,10 @@ class DefaultPostsViewModelTests: XCTestCase {
 
         // GIVEN The sut is created with a dataCoordinator and a navigator
         let sut = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: navigator)
+
+        // THEN the sut is not loading and has nil posts
+        XCTAssertFalse(sut.isLoading)
+        XCTAssertNil(sut.posts)
 
         // GIVEN we expect the posts to be updated
         let postsUpdatedExpectation = expectation(description: "Posts should be updated")
@@ -162,6 +175,10 @@ class DefaultPostsViewModelTests: XCTestCase {
 
         // GIVEN The sut is created with a dataCoordinator and a navigator
         let sut = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: navigator)
+
+        // THEN the sut is not loading and has nil posts
+        XCTAssertFalse(sut.isLoading)
+        XCTAssertNil(sut.posts)
         
         sut.onPostsUpdated = {
             // TEHN the posts should not be updated
@@ -204,6 +221,10 @@ class DefaultPostsViewModelTests: XCTestCase {
 
         // GIVEN sut is created with a dataCoordinator and a navigator
         let sut = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: navigator)
+
+        // THEN the sut is not loading and has nil posts
+        XCTAssertFalse(sut.isLoading)
+        XCTAssertNil(sut.posts)
 
         // WHEN postTapped is called on sut with given post
         sut.postTapped(post: post)
