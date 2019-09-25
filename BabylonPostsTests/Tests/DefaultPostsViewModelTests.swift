@@ -144,4 +144,24 @@ class DefaultPostsViewModelTests: XCTestCase {
             XCTAssertFalse(sut.isLoading)
         }
     }
+    
+    func test_PostViewModelTapped_NavigatedToPostDetail() {
+        let posts: [Post] = getAsset(from: "posts", ofType: "json")!
+        let post = posts[0]
+        
+        let dataCoordinator = MockPostsDataCoordinator()
+        dataCoordinator.postsToReturn = posts
+        
+        let navigator = MockPostsNavigator()
+        navigator.postDetailNavigatedExpectation = expectation(description: "Should be navigated to post detail")
+        navigator.postToCompare = post
+        
+        let sut = DefaultPostsViewModel(dataCoordinator: dataCoordinator, navigator: navigator)
+        
+        sut.postTapped(post: post)
+        
+        waitForExpectations(timeout: 0.5) { handler in
+            
+        }
+    }
 }
