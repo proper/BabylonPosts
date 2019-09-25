@@ -20,24 +20,39 @@ class DefaultPostDetailViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func test_PostDetailViewDidLoad() {
+    func test_ViewDidLoadToFetchPostDetail_Successfully() {
         let post = Post(userId: 1, id: 1, title: "TestTitle", body: "TestBody")
         let dataCoordinator = MockPostDetailDataCoordinator()
+        let comments: [Comment] = getAsset(from: "comments_1", ofType: "json")!
+        dataCoordinator.commentsToReturn = comments
+        let user: User = getAsset(from: "user_1", ofType: "json")!
+        dataCoordinator.userToReturn = user
+        
         let navigator = MockPostDetailNavigator()
         
         let sut = DefaultPostDetailViewModel(post: post,
                                              dataCoordinator: dataCoordinator,
                                              navigator: navigator)
         
+        let loadingStartedExpectation = expectation(description: "Loading should be started")
+        let loadingEndedExpectation = expectation(description: "Loading ended expectation")
+        let postDetailUpdatedExpectation = expectation(description: "Post detail should be updated")
+        
         sut.onLoadingStateChanged = {
-            
+            if sut.isLoading {
+                loadingStartedExpectation.fulfill()
+            } else {
+                loadingEndedExpectation.fulfill()
+            }
         }
         
         sut.onPostDetailUpdated = {
-            
+            postDetailUpdatedExpectation.fulfill()
         }
         
         sut.viewDidLoad()
+        
+        waitForExpectations(timeout: 0.5, handler: nil)
     }
 
 }
@@ -69,7 +84,15 @@ class MockPostDetailDataCoordinator: PostDetailDataCoordinator {
 }
 
 class MockPostDetailNavigator: PostDetailNavigator {
+    var backNavigatedExpectation: XCTestExpectation?
+    var errorNavigatedExpectation: XCTestExpectation?
+    
     func navigate(to destination: PostDetailNavigatorDestination) {
-        
+        switch destination {
+        case .back:
+            backNavigatedExpectation?.fulfill()
+        case .error(let error, let mainAction, let cancelAction):
+            errorNavigatedExpectation?.fulfill()
+        }
     }
 }
