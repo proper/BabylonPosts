@@ -25,8 +25,8 @@ final class DefaultPostsNavigator: PostsNavigator {
                                                                mainAction: mainAction, cancelAction: cancelAction)
             navigationController?.present(alert, animated: true, completion: nil)
         case .postDetail(let post):
-            let navigator = DefaultPostsDetailNavigator(navigationController: navigationController,
-                                                        dataCoordinator: dataCoordinator)
+            let navigator = DefaultPostDetailNavigator(navigationController: navigationController,
+                                                       dataCoordinator: dataCoordinator)
             let viewModel = DefaultPostDetailViewModel(post: post,
                                                        dataCoordinator: dataCoordinator,
                                                        navigator: navigator)

@@ -460,8 +460,8 @@
 		F08C1B61233AF2D900B18024 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F08C1B3E233ACC1A00B18024 /* DefaultPostDetailViewModelTests.swift */,
 				F08C1B62233AF2FE00B18024 /* DefaultPostsViewModelTests.swift */,
+				F08C1B3E233ACC1A00B18024 /* DefaultPostDetailViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";

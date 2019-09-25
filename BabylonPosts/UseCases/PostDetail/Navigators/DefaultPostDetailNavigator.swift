@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DefaultPostsDetailNavigator: PostDetailNavigator {
+final class DefaultPostDetailNavigator: PostDetailNavigator {
     private weak var navigationController: UINavigationController?
     private let dataCoordinator: DataCoordinator
 
