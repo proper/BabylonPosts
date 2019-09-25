@@ -26,7 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F06128AF2336307F00E18665"
+            BuildableName = "BabylonPosts.app"
+            BlueprintName = "BabylonPosts"
+            ReferencedContainer = "container:BabylonPosts.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,16 +46,6 @@
                BlueprintIdentifier = "F06128C32336308000E18665"
                BuildableName = "BabylonPostsTests.xctest"
                BlueprintName = "BabylonPostsTests"
-               ReferencedContainer = "container:BabylonPosts.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F06128CE2336308000E18665"
-               BuildableName = "BabylonPostsUITests.xctest"
-               BlueprintName = "BabylonPostsUITests"
                ReferencedContainer = "container:BabylonPosts.xcodeproj">
             </BuildableReference>
          </TestableReference>

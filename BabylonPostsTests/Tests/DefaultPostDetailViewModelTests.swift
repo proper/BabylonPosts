@@ -27,8 +27,6 @@ class DefaultPostDetailViewModelTests: XCTestCase {
         
         let loadingStartedExpectation = expectation(description: "Loading should be started")
         let loadingEndedExpectation = expectation(description: "Loading ended expectation")
-        let postDetailUpdatedExpectation = expectation(description: "Post detail should be updated")
-        
         sut.onLoadingStateChanged = {
             if sut.isLoading {
                 loadingStartedExpectation.fulfill()
@@ -37,18 +35,20 @@ class DefaultPostDetailViewModelTests: XCTestCase {
             }
         }
         
+        let postDetailUpdatedExpectation = expectation(description: "Post detail should be updated")
         sut.onPostDetailUpdated = {
-            XCTAssertEqual(sut.author, user.name)
-            XCTAssertEqual(sut.description, post.body)
-            XCTAssertEqual(sut.numberOfComments, comments.count)
-            XCTAssertEqual(sut.title, post.title)
-            XCTAssertFalse(sut.isLoading)
             postDetailUpdatedExpectation.fulfill()
         }
         
         sut.viewDidLoad()
         
-        waitForExpectations(timeout: 0.5, handler: nil)
+        waitForExpectations(timeout: 0.5) { handler in
+            XCTAssertEqual(sut.author, user.name)
+            XCTAssertEqual(sut.description, post.body)
+            XCTAssertEqual(sut.numberOfComments, comments.count)
+            XCTAssertEqual(sut.title, post.title)
+            XCTAssertFalse(sut.isLoading)
+        }
     }
     
     func test_ViewDidLoadToFetchPostDetail_FailedWithError() {
@@ -70,7 +70,6 @@ class DefaultPostDetailViewModelTests: XCTestCase {
         
         let loadingStartedExpectation = expectation(description: "Loading should be started")
         let loadingEndedExpectation = expectation(description: "Loading ended expectation")
-        
         sut.onLoadingStateChanged = {
             if sut.isLoading {
                 loadingStartedExpectation.fulfill()
@@ -85,6 +84,12 @@ class DefaultPostDetailViewModelTests: XCTestCase {
         
         sut.viewDidLoad()
         
-        waitForExpectations(timeout: 0.5, handler: nil)
+        waitForExpectations(timeout: 0.5) { handler in
+            XCTAssertFalse(sut.isLoading)
+            XCTAssertNil(sut.author)
+            XCTAssertNil(sut.numberOfComments)
+            XCTAssertEqual(sut.description, post.body)
+            XCTAssertEqual(sut.title, post.title)
+        }
     }
 }
