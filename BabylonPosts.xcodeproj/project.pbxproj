@@ -250,7 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				F0026EA9233805E7003DF15B /* DataCoordinator */,
-				F0026EA22337E9A5003DF15B /* Persistance */,
+				F0026EA22337E9A5003DF15B /* Persistence */,
 				F0026E8C2336E6D8003DF15B /* Network */,
 				F0026E7E2336DB69003DF15B /* API */,
 				F0026E7D2336DB46003DF15B /* Models */,
@@ -299,14 +299,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		F0026EA22337E9A5003DF15B /* Persistance */ = {
+		F0026EA22337E9A5003DF15B /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
 				F0026EA32337E9B7003DF15B /* Storage.swift */,
 				F0026EA52337EACE003DF15B /* StorageService.swift */,
 				F0026EA72337EB20003DF15B /* DefaultStorageService.swift */,
 			);
-			path = Persistance;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		F0026EA9233805E7003DF15B /* DataCoordinator */ = {
